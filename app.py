@@ -93,7 +93,7 @@ def search():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-     if request.method == "POST":
+    if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
@@ -113,7 +113,7 @@ def register():
         flash("Registration Successful!")
         return redirect(url_for("profile", username=session["user"]))
 
-     return render_template("register.html")
+    return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -174,7 +174,7 @@ def add_task():
             "task_name": request.form.get("task_name"),
             "task_description": request.form.get("task_description"),
             "is_urgent": is_urgent,
-            "due_date": " " ,
+            "due_date": request.form.get("due_date"),
             "created_by": session["user"]
         }
         mongo.db.tasks.insert_one(task)
@@ -190,7 +190,7 @@ def edit_task(task_id):
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
         submit = {
-            "category_name": request.form.get("category_name"),                                                                                                                                                         
+            "category_name": request.form.get("category_name"),
             "task_name": request.form.get("task_name"),
             "task_description": request.form.get("task_description"),
             "is_urgent": is_urgent,
