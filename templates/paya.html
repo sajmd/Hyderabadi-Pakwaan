@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nihari Paya</title>
-  <link rel="stylesheet" href="recipe.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='recipe.css')}}">
 </head>
 
 <body>
@@ -13,7 +13,7 @@
   </header>
 
   <section>
-    <img src="img/paya.jpg">
+    <img src="{{ url_for('static', filename='/img/paya.jpg')}}">
   </section>
 
   <h3>  Ingredients: </h3>

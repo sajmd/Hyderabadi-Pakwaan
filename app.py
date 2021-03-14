@@ -19,6 +19,65 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+def recipe():
+    return render_template("recipe.html")
+
+
+@app.route("/products")
+def products():
+    return render_template("products.html")
+
+
+@app.route("/donate")
+def donate():
+    return render_template("donate.html")
+
+@app.route("/adrak")
+def adrak():
+    return render_template("adrak.html")
+
+
+@app.route("/khichdi")
+def khichdi():
+    return render_template("khichdi.html")
+
+
+@app.route("/baingan")
+def baingan():
+    return render_template("baingan.html")
+
+
+@app.route("/biryani")
+def biryani():
+    return render_template("biryani.html")
+
+
+@app.route("/dum")
+def dum():
+    return render_template("dum.html")
+
+
+@app.route("/dalcha")
+def dalcha():
+    return render_template("dalcha.html")
+
+
+@app.route("/paya")
+def paya():
+    return render_template("paya.html")
+
+
+@app.route("/double")
+def double():
+    return render_template("double.html")
+
+
+@app.route("/haleem")
+def haleem():
+    return render_template("haleem.html")
+
+
+
 @app.route("/get_tasks")
 def get_tasks():
     tasks = list(mongo.db.tasks.find())
@@ -69,7 +128,7 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                         session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(
+                        flash("Welcome Subscriber, {}".format(
                             request.form.get("username")))
                         return redirect(url_for(
                             "profile", username=session["user"]))
@@ -115,7 +174,7 @@ def add_task():
             "task_name": request.form.get("task_name"),
             "task_description": request.form.get("task_description"),
             "is_urgent": is_urgent,
-            "due_date": request.form.get("due_date"),
+            "due_date": " " ,
             "created_by": session["user"]
         }
         mongo.db.tasks.insert_one(task)
@@ -131,7 +190,7 @@ def edit_task(task_id):
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
         submit = {
-            "category_name": request.form.get("category_name"),
+            "category_name": request.form.get("category_name"),                                                                                                                                                         
             "task_name": request.form.get("task_name"),
             "task_description": request.form.get("task_description"),
             "is_urgent": is_urgent,
