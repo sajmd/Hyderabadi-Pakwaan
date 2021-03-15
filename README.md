@@ -5,7 +5,7 @@ A responsive ecommerce website built using html, css , Python, Flask  for hydera
 
  ## General Info
  *** 
-Idea is to build a website for foodies who want to learn hyderabadi style cooking .
+Idea is to build a website for foodies who want to learn hyderabadi style cooking. Admin adds weekly tasks and challenges to subscribers .
  ### Technologies 
 *** 
 A list of technologies used within the project: 
